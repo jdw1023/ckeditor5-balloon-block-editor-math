@@ -33,6 +33,8 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 
 import '../theme/theme.css';
 
+import Mathematics from 'ckeditor5-math/src/math';
+
 export default class BalloonEditor extends BalloonEditorBase {}
 
 // Plugins to include in the build.
@@ -60,7 +62,8 @@ BalloonEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Mathematics
 ];
 
 // Editor configuration.
@@ -80,7 +83,8 @@ BalloonEditor.defaultConfig = {
 		'mediaEmbed',
 		'|',
 		'undo',
-		'redo'
+		'redo',
+		'math'
 	],
 	toolbar: {
 		items: [
@@ -103,6 +107,12 @@ BalloonEditor.defaultConfig = {
 			'tableRow',
 			'mergeTableCells'
 		]
+	},
+	math: {
+		engine: 'katex', // or katex or function. E.g. (equation, element, display) => { ... }
+		outputType: 'script', // or span
+		forceOutputType: false, // forces output to use outputType
+		enablePreview: true // Enable preview view
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
